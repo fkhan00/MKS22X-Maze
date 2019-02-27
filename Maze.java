@@ -47,17 +47,14 @@ public class Maze{
 
   public boolean solveH(int row, int col, int[][] covered, int dirR, int dirC){
       if((ary[row][col].equals("E")))
-      {
-        return true;}
+      {return true;}
     if(! valid(covered, row, col)){
       return false;}
     covered[row][col] ++;
     ary[row][col] = "-";
-    System.out.println(toString());
-    if( solveH(row + 1, col, covered, 1, 0) || solveH(row, col + 1, covered, 0, 1)
-    || solveH(row - 1, col, covered, -1, 0) || solveH(row, col - 1, covered, 0, -1)){
-      return true;}
-    // situation for if stuck within four walls
+    return solveH(row + 1, col, covered, 1, 0) || solveH(row, col + 1, covered, 0, 1)
+    || solveH(row - 1, col, covered, -1, 0) || solveH(row, col - 1, covered, 0, -1);
+
       }
 
 
