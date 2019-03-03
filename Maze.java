@@ -47,26 +47,29 @@ public class Maze{
     String output = "";
     for(int i = 0; i < ary.length; i++){
       for(int j = 0; j < ary[0].length; j++){
-        output += ary[i][j];}}
+        output += ary[i][j];}
+      output += "\n";
+      }
     return output;
   }
   //wrapper class returning number of steps taken to get from S to E
   public int solve(){
     //calls on solveH to find path
-    solveH(strY, strX, 0);
+    if(!solveH(strY, strX, 0)){
+      return -1;}
     int counter = 0;
     // count number of steps taken and returns it
     for(int i = 0; i < ary.length; i++){
       for(int j = 0; j < ary[0].length; j++){
         if(ary[i][j].equals("@")){
         counter ++;}}}
+    System.out.println(toString());
     return counter;}
 
   public boolean solveH(int row, int col, int steps){
     // if reached the end return true
     if(ary[row][col].equals("E")){
       return true;}
-    System.out.println(toString());
     // if this is a valid posiiton
     if(valid(row, col)){
       // mark the position
