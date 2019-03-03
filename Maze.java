@@ -4,12 +4,8 @@ import java.util.Scanner;
 public class Maze{
   public String[][] ary;
   public int strX, strY;
-  public int counter;
-  public static final int movesX[] = {1, -1, 0, 0};
-  public static final int movesY[] = {0, 0, 1, -1};
 
   public void convert(String text) throws FileNotFoundException{
-    counter = 0;
     File fil = new File(text);
     Scanner scan = new Scanner(fil);
     String output = "";
@@ -43,8 +39,13 @@ public class Maze{
         output += ary[i][j];}}
     return output;
   }
-  public boolean solve(){
-    return solveH(strY, strX, 0);}
+  public int solve(){
+    solveH(strY, strX, 0);
+    int counter = 0;
+    for(int i = 0; i < ary.length; i++){
+      for(int j = 0; j < ary[0].length; j++){
+        counter ++;}}
+    return counter;}
 
   public boolean solveH(int row, int col, int steps){
     if(ary[row][col].equals("E")){
